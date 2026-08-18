@@ -1119,7 +1119,7 @@ _fmt_int :: proc(fi: ^Info, u: u64, base: int, is_signed: bool, bit_size: int, d
 	}
 
 	flags: strconv.Int_Flags
-	if fi.hash && !fi.zero && start == 0 { flags += {.Prefix} }
+	if fi.hash && start == 0 { flags += {.Prefix} }
 	if fi.plus                           { flags += {.Plus}   }
 	s := strconv.write_bits(buf[start:], u, base, is_signed, bit_size, digits, flags)
 	prev_zero := fi.zero
