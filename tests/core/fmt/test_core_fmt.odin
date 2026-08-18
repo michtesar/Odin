@@ -108,12 +108,14 @@ test_fmt_escaping_prefixes :: proc(t: ^testing.T) {
 	check(t, "% { } 0 { } } {", "%% {{ }} {} {{ }} }} {{", 0 )
 
 	// Prefixes
-	check(t, "+3.000", "%+f",   3.0 )
-	check(t, "0003",   "%04i",  3 )
-	check(t, "3   ",   "% -4i", 3 )
-	check(t, "+3",     "%+i",   3 )
-	check(t, "0b11",   "%#b",   3 )
-	check(t, "0xA",    "%#X",   10 )
+	check(t, "+3.000",  "%+f",   3.0 )
+	check(t, "0003",    "%04i",  3 )
+	check(t, "3   ",    "% -4i", 3 )
+	check(t, "+3",      "%+i",   3 )
+	check(t, "0b11",    "%#b",   3 )
+	check(t, "0xA",     "%#X",   10 )
+	check(t, "-0xffee", "%#02x", i32(-0xffee))
+	check(t, "0xaaee",  "%#02x", i32(0xaaee))
 }
 
 @(test)
